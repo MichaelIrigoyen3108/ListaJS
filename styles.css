@@ -1,0 +1,44 @@
+
+.lista1 {
+    display: flex;
+    flex-direction: row; 
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    justify-content: center; 
+}
+.ul1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.ul1 li {
+    font-size: 26px;
+    border: 1px solid #808B96;
+    display: inline-block; 
+    margin: 0 10px; 
+}
+.tarea1,
+.tarea2,
+.tarea3 {
+    cursor: pointer;
+    transition: all 0.2s; 
+    color: #000; 
+    text-decoration: none; 
+    outline: none; 
+    user-select: none; 
+}
+.tarea1:active,
+.tarea2:active,
+.tarea3:active {
+    transform: translateY(2px); /* Empuja ligeramente hacia abajo al hacer clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave al hacer clic */
+}
+
+
