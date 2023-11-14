@@ -43,8 +43,11 @@
 
 
 const imagenes = [
-    '../imagenes/taza.jpeg',
-    '../imagenes/taza2.jpeg'
+    '../imagenes/taza1.jpeg',
+    '../imagenes/taza2.jpeg',
+    '../imagenes/taza3.jpeg',
+    '../imagenes/taza4.jpeg',
+    '../imagenes/taza5.jpeg'
 ];
 
 document.querySelector('.form').addEventListener('submit', function (event) {
@@ -52,9 +55,23 @@ document.querySelector('.form').addEventListener('submit', function (event) {
 
     const busqueda = document.querySelector('.aq').value.toLowerCase();
     const resultadoBusqueda = document.querySelector('.resultadoBusqueda1');
-
-    resultadoBusqueda.innerHTML = imagenes
-    .filter(imagen => imagen.toLowerCase().includes(busqueda)).map(imagen => `<img src="${imagen}" alt="Taza">`).join('');
+    if (busqueda.includes('taza')) {
+        resultadoBusqueda.innerHTML = imagenes
+            .filter(imagen => imagen.toLowerCase().includes(busqueda))
+            .map(imagen => `
+                <div class="producto">
+                    <img src="${imagen}" alt="Taza">
+                    <button onclick="agregarAlCarrito('${imagen}')">Agregar al Carrito</button>
+                </div>
+            `)
+            .join('');
+    } else {
+        resultadoBusqueda.innerHTML = "No se encontraron resultados";
+    }
 });
+
+function agregarAlCarrito(imagen) {
+    console.log(`Imagen agregada al carrito: ${imagen}`);
+};
 
 
