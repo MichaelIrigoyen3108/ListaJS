@@ -49,6 +49,9 @@ const imagenes = [
     '../imagenes/taza4.jpeg',
     '../imagenes/taza5.jpeg'
 ];
+// Recuperar el carrito desde localStorage al cargar la página
+const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
 
 document.querySelector('.form').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -71,7 +74,35 @@ document.querySelector('.form').addEventListener('submit', function (event) {
 });
 
 function agregarAlCarrito(imagen) {
+    //pushear la imagen dentro del array del carrito
+    carrito.push(imagen);
     console.log(`Imagen agregada al carrito: ${imagen}`);
+    
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+
+    actualizarCarrito();
 };
+
+function actualizarCarrito() {
+    // Accede a la etiqueta que tengo definida en el carrito donde va a insertar un nuevo nodo
+    const etiquetaCarrito = document.querySelector('.carrito');
+    // Vaciar posibles elementos del carrito
+    etiquetaCarrito.innerHTML = '';
+    // Va agregando las imágenes a las que se les hace clic
+    carrito.forEach(imagen => {
+        const nodoNuevo = document.createElement('div');
+        nodoNuevo.innerHTML = `
+            <div class="carritoAnidado">
+                <img src="${imagen}" alt="Taza en el carrito">
+            </div>
+        `;
+        etiquetaCarrito.appendChild(nodoNuevo);
+    });
+}
+
+
+
+
 
 
